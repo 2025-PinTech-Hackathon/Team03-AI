@@ -14,3 +14,11 @@ class SpendingRequest(BaseModel):
 
 class ReviewResponse(BaseModel):
     summary: str
+
+class MonthlyReportResponse(BaseModel):
+    summary: str
+    shopping: int
+    food: int
+    culture: int
+    etc: int
+
