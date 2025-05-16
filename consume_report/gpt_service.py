@@ -2,9 +2,16 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 from consume_report.schemas import SpendingRequest
+import httpx
 
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+http_client = httpx.Client()
+
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    http_client=http_client
+)
 
 def generate_summary(request: SpendingRequest) -> str:
     role = request.role.upper()
